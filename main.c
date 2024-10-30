@@ -5,6 +5,7 @@
 
 const int size = 100;
 const unsigned int column = 10;
+const int bins = 10;
 
 int main()
 {
@@ -28,5 +29,16 @@ int main()
     print(mass, size, column);
     sort_mass(mass, size, E_UP);
     print(mass, size, column);
+    printf("%f\n", get_median(mass, size));
+    print_moda(mass, size);
+    printf("%f\n", get_average(mass, size));
+    printf("%d\n", get_max(mass, size));
+    printf("%d\n", get_min(mass, size));
+    printf("%d\n", get_range(mass, size));
+    printf("%f\n", get_dispersion(mass, size));
+    printf("%f\n", get_st_deviation(mass, size));
+    int count[bins];
+    hist(mass, size, count, bins);
+    print_hist(mass, size, count, bins);
     return 0;
 }
