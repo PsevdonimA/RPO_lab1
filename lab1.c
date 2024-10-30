@@ -234,3 +234,42 @@ float get_st_deviation(const int* mass, const int size)
 {
     return pow(get_dispersion(mass, size), 0.5f);
 }
+
+// --- 11 part ---
+
+int count_steps(float a, float step)
+{
+    int s = 0;
+    while (a > step)
+    {
+        a -= step;
+        s++;
+    }
+    return s;
+}
+
+void hist(const int* mass, const int size, int* count, const int bins)
+{
+    int mn = get_min(mass, size);
+    int mx = get_max(mass, size);
+    float step = (float)(mx - mn) / (float)(bins);
+    for (int i = 0; i < bins; i++)
+    {
+        count[i] = 0;
+    }
+    float k = 0; // buffer
+    int c_steps = 0; // buffer
+    for (int i = 0; i < size; i++)
+    {
+        k = (float)(mass[i]) - (float)mn;
+        c_steps = count_steps(k, step);
+        if (c_steps == bins)
+        {
+            count[bins - 1] += 1;
+        }
+        else
+        {
+            count[c_steps] += 1;
+        }
+    }
+}
