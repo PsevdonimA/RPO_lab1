@@ -17,5 +17,6 @@ int get_range(const int* mass, const int size);
 float get_dispersion(const int* mass, const int size);
 float get_st_deviation(const int* mass, const int size);
 void hist(const int* mass, const int size, int* count, const int bins);
+void print_hist(const int* mass, const int size, const int* count, const int bins);
 
 #endif

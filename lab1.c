@@ -273,3 +273,30 @@ void hist(const int* mass, const int size, int* count, const int bins)
         }
     }
 }
+
+// --- 12 part ---
+
+void print_hist(const int* mass, const int size, const int* count, const int bins)
+{
+    int mn = get_min(mass, size);
+    int mx = get_max(mass, size);
+    float step = (float)(mx-mn) / (float)bins;
+    int buffer[2] = {mn, mx}; // buffer
+    int sdv = get_column_len(buffer, 2, 1, 0) + 8; // column correction
+    for (int i = 0; i < bins; i++)
+    {
+        if (i < bins-1)
+        {
+            printf("[ %*f, %*f) ", sdv, mn + (step*i), sdv, mn + (step*(i+1)));
+        }
+        else
+        {
+            printf("[ %*f, %*f] ", sdv, mn + (step*i), sdv, (float)mx);
+        }
+        for (int j = 0; j < count[i]; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
