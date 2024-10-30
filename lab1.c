@@ -191,3 +191,18 @@ int get_max(const int* mass, const int size)
     }
     return m;
 }
+
+// --- 7 part ---
+
+int get_min(const int* mass, const int size)
+{
+    int m = mass[0];
+    for (int i = 0; i < size; i++)
+    {
+        if (mass[i] < m)
+        {
+            m = mass[i];
+        }
+    }
+    return m;
+}

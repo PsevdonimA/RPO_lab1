@@ -12,5 +12,6 @@ float get_median(const int* mass, const int size);
 void print_moda(const int* mass, const int size);
 float get_average(const int* mass, const int size);
 int get_max(const int* mass, const int size);
+int get_min(const int* mass, const int size);
 
 #endif
