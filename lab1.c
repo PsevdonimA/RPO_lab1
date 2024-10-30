@@ -1,5 +1,6 @@
 #include "lab1.h"
 #include <stdio.h>
+#include <math.h>
 
 // --- 1 part ---
 
@@ -225,4 +226,11 @@ float get_dispersion(const int* mass, const int size)
         sm += ((float)mass[i] - avg) * ((float)mass[i] - avg);
     }
     return sm / (float)(size-1);
+}
+
+// --- 10 part ---
+
+float get_st_deviation(const int* mass, const int size)
+{
+    return pow(get_dispersion(mass, size), 0.5f);
 }
