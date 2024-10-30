@@ -7,5 +7,6 @@ extern const enum ESort
     E_DOWN
 }ESort;
 void sort_mass(int* mass, const int size, const enum ESort eSort);
+void print(const int* mass, const int size, const unsigned int column);
 
 #endif

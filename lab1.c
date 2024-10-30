@@ -1,6 +1,8 @@
 #include "lab1.h"
 #include <stdio.h>
 
+// --- 1 part ---
+
 void recursiv_sort(int* mass, int low, int high);
 void reverse_mass(int* mass, int size);
 
@@ -58,5 +60,46 @@ void reverse_mass(int* mass, int size)
     for (int i = 0; i < size/2; i++)
     {
         swap(&mass[i], &mass[size-i-1]);
+    }
+}
+
+// --- 2 part ---
+
+int get_column_len(const int* mass, const int size, const unsigned int column, int numb)
+{
+    int len = 0;
+    int cur_len = 0;
+    int k = 0; // buffer
+    for (int i = numb; i < size; i += column)
+    {
+        cur_len = 1;
+        k = mass[i] / 10;
+        while (k > 0)
+        {
+            cur_len++;
+            k /= 10;
+        }
+        if (cur_len > len)
+        {
+            len = cur_len;
+        }
+    }
+    return len;
+}
+
+void print(const int* mass, const int size, const unsigned int column)
+{
+    int column_len[column];
+    for (int i = 0; i < (int)column; i++)
+    {
+        column_len[i] = get_column_len(mass, size, column, i);
+    }
+    for (int i = 0; i < size; i++)
+    {
+        printf("%+-*d ", column_len[i % column] + 1, mass[i]);
+        if ((i % column == column - 1) || (i == size - 1))
+        {
+            printf("\n");
+        }
     }
 }
