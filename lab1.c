@@ -213,3 +213,16 @@ int get_range(const int* mass, const int size)
 {
     return get_max(mass, size) - get_min(mass, size);
 }
+
+// --- 9 part ---
+
+float get_dispersion(const int* mass, const int size)
+{
+    float avg = get_average(mass, size);
+    float sm = 0;
+    for (int i = 0; i < size; i++)
+    {
+        sm += ((float)mass[i] - avg) * ((float)mass[i] - avg);
+    }
+    return sm / (float)(size-1);
+}
