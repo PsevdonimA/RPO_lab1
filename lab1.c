@@ -123,3 +123,44 @@ float get_median(const int* mass, const int size)
         return (float)(((float)(mass2[size/2-1]) + (float)(mass2[size/2]))/2);
     }
 }
+
+// --- 4 part ---
+
+void print_moda(const int* mass, const int size)
+{
+    int mass2[size];
+    for (int i = 0; i < size; i++)
+    {
+        mass2[i] = mass[i];
+    }
+    sort_mass(mass2, size, E_UP);
+    int mass_counter[size];
+    int cur_val = mass2[0];
+    int cur_moda = 0;
+    int moda = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (mass2[i] == cur_val)
+        {
+            mass_counter[i] = ++cur_moda;
+            if (cur_moda > moda)
+            {
+                moda = cur_moda;
+            }
+        }
+        else
+        {
+            cur_moda = 1;
+            cur_val = mass2[i];
+            mass_counter[i] = 1;
+        }
+    }
+    for (int i = 0; i < size; i++)
+    {
+        if (mass_counter[i] == moda)
+        {
+            printf("%d ", mass2[i]);
+        }
+    }
+    printf("\n");
+}
