@@ -206,3 +206,10 @@ int get_min(const int* mass, const int size)
     }
     return m;
 }
+
+// --- 8 part ---
+
+int get_range(const int* mass, const int size)
+{
+    return get_max(mass, size) - get_min(mass, size);
+}
