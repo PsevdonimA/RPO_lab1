@@ -103,3 +103,23 @@ void print(const int* mass, const int size, const unsigned int column)
         }
     }
 }
+
+// --- 3 part ---
+
+float get_median(const int* mass, const int size)
+{
+    int mass2[size];
+    for (int i = 0; i < size; i++)
+    {
+        mass2[i] = mass[i];
+    }
+    sort_mass(mass2, size, E_UP);
+    if (size % 2 == 1)
+    {
+        return (float)mass2[size/2];
+    }
+    else
+    {
+        return (float)(((float)(mass2[size/2-1]) + (float)(mass2[size/2]))/2);
+    }
+}
