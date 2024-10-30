@@ -164,3 +164,15 @@ void print_moda(const int* mass, const int size)
     }
     printf("\n");
 }
+
+// --- 5 part ---
+
+float get_average(const int* mass, const int size)
+{
+    float summ = 0;
+    for (int i = 0; i < size; i++)
+    {
+        summ += (float)(mass[i]);
+    }
+    return summ/(float)size;
+}
